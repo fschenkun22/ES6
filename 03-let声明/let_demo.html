@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container{
+            border-style:dotted;
+            height: auto;
+            display: inline-block;
+        }
+        .page-header{
+            border-style:solid;
+            border-color:red;
+            height: 50px;
+            
+        }
+        .item{
+            border-style: solid;
+            border-color: aqua;
+            height: 60px;
+            width: 60px;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2 class="page-header">点击切换颜色</h2>
+        <div class="item">1</div>
+        <div class="item">2</div>
+        <div class="item">3</div>
+    </div>
+
+    <script>
+        let items = document.getElementsByClassName('item');
+        for(let i=0;i<items.length;i++){
+            items[i].onclick=function(){
+                this.style.background = 'pink';
+            }
+        }
+    </script>
+
+
+
+</body>
+</html>
