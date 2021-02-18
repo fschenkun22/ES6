@@ -1,30 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        div{
+        div {
             width: 200px;
             height: 200px;
             background-color: aqua;
         }
     </style>
 </head>
+
 <body>
     <div id="ad"></div>
-    
+
     <script>
+        // let ad = document.getElementById('ad');
+        // ad.addEventListener("click",function(){
+        //     console.log(this);//此时this指向div ad
+        //     let _this = this;//临时保存this
+        //     setTimeout(function(){
+        //         _this.style.background = 'pink';
+        //         console.log(this);//此时this指向Window，所以直接使用this无效
+        //     },1000);
+        // })
+
         let ad = document.getElementById('ad');
-        ad.addEventListener("click",function(){
-            let _this = this;
-            setTimeout(function(){
-                _this.style.background = 'pink';
-            },1000);
+        ad.addEventListener("click", function () {
+            console.log(this);//this指向为声明时的作用于 
+            setTimeout(() => {
+                this.style.background = 'pink';
+            }, 1000
+            );
         })
     </script>
 
 </body>
+
 </html>
