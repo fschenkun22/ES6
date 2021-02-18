@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let fn = (a,b) => {
+            return a + b;
+        }
+        console.log(fn(1,2));
+
+        //1 箭头函数this是静态的，始终指向函数声明时所在作用域
+
+        function getName(){
+            console.log(this.name);
+        }
+        
+        let getName2 = () => {
+            console.log(this.name);
+        }
+
+        window.name = 'abc';
+
+        const school = {
+            name:"def",
+        }
+
+        getName();
+        getName2();
+
+        getName.call(school);//普通函数声明值跟着this改变输出的def
+        getName2.call(school);//this仍然指向abc
+
+        //箭头函数不能作为构造实例化对象
+
+
+        //arguments 不能使用
+        // let fn2 = () => {
+        //     console.log(arguments);
+        // }
+
+        function fn2(){
+            console.log(arguments);
+        }//普通方式可以
+
+        fn2(1,2,3);
+
+        //简写，当形参只有一个 小括号不写 return不写
+
+        // let add = (n) => {
+        //     return n+n;
+        // }
+        let add = n => n+n;
+        console.log(add(9));
+
+
+
+    </script>
+    
+</body>
+</html>
