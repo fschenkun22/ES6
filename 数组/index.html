@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // let arr = [12,5,8]
+        // let res = arr.map(
+        //     function(item){
+        //         return item*2
+        //     }
+        // )
+        // let res = arr.map(item=>item*2)
+        // console.log(res);
+
+        //map
+        // let score = [2,33,444,5555,6,99]
+        // let res = score.map(i=>i>60?"pass":"fail")
+        // console.log(res);
+
+        //reduce
+        // let res = score.reduce(
+        //     function(a,item,index){
+        //         console.log(a,'item',item,'index',index);
+        //     }
+        // )
+        //tmp为临时结果，临时结果加下一个item
+        // let res = score.reduce(
+        //     function(tmp,item,index){
+        //         return tmp+item
+        //     }
+        // )
+        // let res = score.reduce(
+        //     (tmp,item,index) => {
+        //         if(index<score.length-1){
+        //             //不是最后一次
+        //             return tmp+item
+        //         }else{
+        //             //最后一次
+        //             return (tmp+item)/score.length
+        //         }
+        //     }
+        // )
+
+        // console.log(res);
+
+
+        //filter
+        // let res = score.filter(
+        //     item=>true
+        //     //过滤结果返回真，数据被保留
+        // )
+        // let res = score.filter(item => item%3==0)
+
+        // console.log(res);
+
+        // let arr = [
+        //     {title:'first',price:5},
+        //     {title:'second',price:101},
+        //     {title:'trird',price:553},
+        //     {title:'forth',price:814}
+        // ]
+        // let res = arr.filter(
+        //     tmp => tmp.price>60
+        // )
+        // console.log(res);
+        let arr = [12,22,56,75,46]
+        arr.forEach(
+            (item,index)=>{
+                console.log(item,index);
+            }
+        )
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <P>异步：代码更复杂</P>
+    <p>同步：代码简单</p>
+    <h1>Promise 消除异步操作</h1>
+    <p>用同步的方式，来书写异步代码</p>
+
+
+
+    <script>
+        let p = new Promise(
+            function (resolve, reject) {
+
+
+                $.ajax({
+                    url: 'arr.txt',
+                    dataType: 'json',
+                    success(arr) {
+                        resolve(arr)
+                    },
+                    error(err) {
+                        reject(err)
+                    }
+                })
+
+            }
+        )
+
+
+
+
+
+        p.then(
+            function () {
+                alert('succsess')
+            },
+            function () {
+                alert('fail')
+            }
+        )
+    </script>
+
+
+</body>
+
+</html>
