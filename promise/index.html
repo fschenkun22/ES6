@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <title>Document</title>
 </head>
 
@@ -17,13 +18,11 @@
 
 
 
-    <script>
+    <!-- <script>
         let p = new Promise(
             function (resolve, reject) {
-
-
                 $.ajax({
-                    url: 'arr.txt',
+                    url: 'arr1.txt',
                     dataType: 'json',
                     success(arr) {
                         resolve(arr)
@@ -32,24 +31,94 @@
                         reject(err)
                     }
                 })
-
             }
         )
-
-
-
-
 
         p.then(
-            function () {
+            function (arr) {
                 alert('succsess')
+                console.log(arr);
             },
-            function () {
+            function (err) {
                 alert('fail')
+                console.log(err);
             }
         )
-    </script>
+    </script> -->
 
+
+    <!-- <script>
+        $.ajax({url:"https://geoapi.qweather.com/v2/city/lookup?location=chaoyang&key=09071cb27ee14c1c98b9e77819c148f8",dataType:"json"}).then(
+            res=>{
+                console.log(res);
+            },err=>{
+                alert('失败')
+            }
+        )
+
+    </script> -->
+    <!-- https://www.bilibili.com/video/BV1uK411H7on?p=49 -->
+    <script>
+        function getJSON(url) {
+            return new Promise(
+                (resolve, reject) => {
+                    $.ajax({
+                        url,
+                        dataType: 'json',
+                        success(arr) {
+                            resolve(arr)
+                        },
+                        error(err) {
+                            reject(err)
+                        }
+                    })
+                }
+            )
+        }
+
+        // const res = getWeather('https://geoapi.qweather.com/v2/city/lookup?location=chaoyang&key=09071cb27ee14c1c98b9e77819c148f8')
+        // console.log(res);
+
+        // getWeather('https://geoapi.qweather.com/v2/city/lookup?location=chaoyang&key=09071cb27ee14c1c98b9e77819c148f8').then(val=>{console.log(val);},err=>{console.log('错误');})
+
+        function 第一个() {
+            console.log('第一个函数');
+        }
+        function 第二个() {
+            console.log('第二个函数');
+        }
+        function 第三个() {
+            console.log('第三个函数');
+        }
+
+        async function main() {
+
+            try {
+                console.log('main start')
+
+                let res1Slow = await getJSON('http://127.0.0.1:65500/set/')
+                console.log(res1Slow);
+
+                let resSlow = await getJSON('http://127.0.0.1:65500/test')
+                console.log(resSlow);
+
+                let res = await getJSON('https://geoapi.qweather.com/v2/city/lookup?location=chaoyang&key=09071cb27ee14c1c98b9e77819c148f8')
+                console.log(res);
+
+
+
+                console.log('end main');
+            } catch (e) {
+                console.log('found error:', e);
+            }
+
+        }
+
+        console.log('program start');
+        main()
+        console.log('program end');
+
+    </script>
 
 </body>
 
