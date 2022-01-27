@@ -1,5 +1,6 @@
 import React from 'react'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import AddPostForm from './features/posts/addPostForm'
 import PostsList from './features/posts/postsList'
 
 
@@ -8,7 +9,11 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path='/' element={
-          <PostsList />
+          <>
+            <AddPostForm />
+            <PostsList />
+          </>
+
         }></Route>
 
 
