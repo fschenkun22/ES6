@@ -1,6 +1,11 @@
+import { nanoid } from '@reduxjs/toolkit';
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { postAdded } from './postSlice'
+
 
 function AddPostForm() {
+    const dispatch = useDispatch()
     const [title, setTitle] = useState('')
     const [content, setContent] = useState('')
 
@@ -12,12 +17,30 @@ function AddPostForm() {
         setContent(e.target.value)
     } 
 
+
+    const onSavePostClicked = () =>{
+        if(title && content) {
+            //派遣的数据
+            dispatch(
+                postAdded({
+                    id:nanoid(),
+                    title,
+                    content
+                })
+            )
+        } 
+        setTitle('')
+        setContent('')
+    }
+
+
+
     return (
         <>
             <section>
-                <h2>添加新帖子</h2>
+                <h2>addcomment</h2>
                 <form>
-                    <label htmlFor="postTitle">帖子标题:</label>
+                    <label htmlFor="postTitle">cap:</label>
                     <input
                         type="text"
                         id="postTitle"
@@ -25,14 +48,14 @@ function AddPostForm() {
                         value={title}
                         onChange={onTitleChanged}
                     />
-                    <label htmlFor="postContent">内容：</label>
+                    <label htmlFor="postContent">contant：</label>
                     <textarea
                         id="postContent"
                         name="postContent"
                         value={content}
                         onChange={onContentChanged}
                     />
-                    <button type="button">保存帖子</button>
+                    <button type="button" onClick={onSavePostClicked}>save</button>
                 </form>
             </section>
 
