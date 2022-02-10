@@ -1,69 +1,56 @@
-import { nanoid } from '@reduxjs/toolkit';
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { postAdded } from './postSlice'
+import { nanoid } from '@reduxjs/toolkit'
+import React, { useState } from 'react'
+import {useDispatch} from 'react-redux'
 
+import {postAdded} from './postsSlice' //这是action creator
 
 function AddPostForm() {
-    const dispatch = useDispatch()
+
     const [title, setTitle] = useState('')
     const [content, setContent] = useState('')
 
     const onTitleChanged = e => setTitle(e.target.value)
+    const onContentChanged = e => setContent(e.target.value)
 
-    //这两个变量存储的一直是最新的输入框和文本框中的内容
-    const onContentChanged = e =>{
-        // console.log(e);
-        setContent(e.target.value)
-    } 
-
+    const dispatch = useDispatch()
 
     const onSavePostClicked = () =>{
-        if(title && content) {
-            //派遣的数据
+        if(title&&content){
+            //派遣post/postAdded对应reducer
             dispatch(
-                postAdded({
-                    id:nanoid(),
-                    title,
-                    content
-                })
+                postAdded(
+                    {
+                        id:nanoid(),
+                        title,
+                        content,
+                        a:1
+                    }
+                )
             )
-        } 
-        setTitle('')
-        setContent('')
+            setTitle('')
+            setContent('')
+            
+        }
     }
-
-
 
     return (
         <>
-            <section>
-                <h2>addcomment</h2>
-                <form>
-                    <label htmlFor="postTitle">cap:</label>
-                    <input
-                        type="text"
-                        id="postTitle"
-                        name="postTitle"
-                        value={title}
-                        onChange={onTitleChanged}
-                    />
-                    <label htmlFor="postContent">contant：</label>
-                    <textarea
-                        id="postContent"
-                        name="postContent"
-                        value={content}
-                        onChange={onContentChanged}
-                    />
-                    <button type="button" onClick={onSavePostClicked}>save</button>
-                </form>
-            </section>
+            <div>AddPostForm</div>
+            <input
+                type='text'
+                value={title}
+                onChange={onTitleChanged}
+            />
 
+            <textarea
+                value={content}
+                onChange={onContentChanged}
+            />
 
-
-
+            <button onClick={onSavePostClicked}>save</button>
         </>
+
     )
 }
 
-export default AddPostForm;
+export default AddPostForm

@@ -82,7 +82,7 @@
         // getWeather('https://geoapi.qweather.com/v2/city/lookup?location=chaoyang&key=09071cb27ee14c1c98b9e77819c148f8').then(val=>{console.log(val);},err=>{console.log('错误');})
 
         function 第一个() {
-            console.log('第一个函数');
+            alert('第一个')
         }
         function 第二个() {
             console.log('第二个函数');
@@ -95,21 +95,24 @@
 
             try {
                 console.log('main start')
+                第一个()
 
                 let res1Slow = await getJSON('http://127.0.0.1:65500/set/')
-                console.log(res1Slow);
+                console.log('1', res1Slow);
 
+                第二个()
                 let resSlow = await getJSON('http://127.0.0.1:65500/test')
-                console.log(resSlow);
+                console.log('2', resSlow);
+
+                第三个()
 
                 let res = await getJSON('https://geoapi.qweather.com/v2/city/lookup?location=chaoyang&key=09071cb27ee14c1c98b9e77819c148f8')
-                console.log(res);
-
-
+                console.log('3', res);
 
                 console.log('end main');
             } catch (e) {
-                console.log('found error:', e);
+                console.log('发现错误：', e);
+                alert(e.readyState)
             }
 
         }
@@ -117,6 +120,7 @@
         console.log('program start');
         main()
         console.log('program end');
+        console.log('其他程序');
 
     </script>
 

@@ -1,29 +1,36 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
-import { Link, useParams } from 'react-router-dom';
+import React from 'react'
+import { useSelector } from 'react-redux'
+import { Link, useParams } from 'react-router-dom'
+
 
 function SinglePostPage() {
 
-    const params = useParams()
+    let params = useParams()
+    const postId = params.postId
+
     const post = useSelector(
-        state => state.posts.find(
-            post => post.id === params.postId
-        )
+        state => state.posts.find(post => post.id === postId)
     )
-    if(!post){
-        return(
-            <h2>can not find this data</h2>
+
+    if (!post) {
+        return (
+            <>
+                <p>未找到数据</p>
+                <Link to="/">return</Link>
+            </>
         )
+
     }
 
-  return (
-      <>
-        siglepost page
-        <h2>{post.title}</h2>
-        <p>{post.content}</p>
-        <Link to={`/editPost/${post.id}`}>edit</Link>
-      </>
-  )
+    return (
+        <>
+            <div>SinglePostPage</div>
+            <h2>{post.title}</h2>
+            <p>{post.content}</p>
+            <Link to="/">return</Link>
+        </>
+
+    )
 }
 
-export default SinglePostPage;
+export default SinglePostPage                  

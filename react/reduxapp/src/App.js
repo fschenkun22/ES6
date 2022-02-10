@@ -4,13 +4,14 @@ import AddPostForm from './features/posts/addPostForm'
 import EditPostForm from './features/posts/editPostForm'
 import PostsList from './features/posts/postsList'
 import SinglePostPage from './features/posts/singlePostPage'
-
+import Counter from './features/counter/counter'
 function App() {
   return (
     <BrowserRouter>
       <Routes>
         <Route path='/' element={
           <>
+            <p>第一个跟路由</p>
             <AddPostForm />
             <hr></hr>
             <PostsList />
@@ -20,9 +21,13 @@ function App() {
 
 
         </Route>
-        <Route path='/posts/:postId' element={<SinglePostPage/>}></Route>
+
+
+        <Route path='/posts/:postId' element={<SinglePostPage />}></Route>
 
         <Route path = '/editPost/:postId' element={<EditPostForm/>}/>
+
+        <Route path='/counter/' element={<Counter />} />
 
         <Route path="*" element={404}></Route>
 
