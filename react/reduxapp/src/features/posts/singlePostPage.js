@@ -1,7 +1,9 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
 import { Link, useParams } from 'react-router-dom'
-
+import PostAuthor from './postAuthor'
+import ReactionButtons from './reactionButtons'
+import { TimeAgo } from './timeAgo'
 
 function SinglePostPage() {
 
@@ -17,6 +19,8 @@ function SinglePostPage() {
             <>
                 <p>未找到数据</p>
                 <Link to="/">return</Link>
+                <PostAuthor userId={post.user} />
+                <TimeAgo timestamp={post.date}/>
             </>
         )
 
@@ -28,6 +32,9 @@ function SinglePostPage() {
             <h2>{post.title}</h2>
             <p>{post.content}</p>
             <Link to="/">return</Link>
+            <PostAuthor userId={post.user} />
+            <TimeAgo timestamp={post.date}/>
+            <ReactionButtons post={post} />
         </>
 
     )

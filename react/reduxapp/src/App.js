@@ -5,6 +5,7 @@ import EditPostForm from './features/posts/editPostForm'
 import PostsList from './features/posts/postsList'
 import SinglePostPage from './features/posts/singlePostPage'
 import Counter from './features/counter/counter'
+import PostAuthor from './features/posts/postAuthor'
 function App() {
   return (
     <BrowserRouter>
@@ -28,6 +29,8 @@ function App() {
         <Route path = '/editPost/:postId' element={<EditPostForm/>}/>
 
         <Route path='/counter/' element={<Counter />} />
+
+        {/* <Route path='/auth/' element={<PostAuthor/>}/> */}
 
         <Route path="*" element={404}></Route>
 
